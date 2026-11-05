@@ -1,0 +1,5 @@
+# Netlify の公開設定（GitHub 連携用）
+# 公開フォルダはこのフォルダ全体。ただし予約集計のスクリプトとローカル確認用ファイルは公開しない
+[build]
+  publish = "."
+  command = "rm -rf backend serve.ps1 README.md"

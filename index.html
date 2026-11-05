@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>「好き」と「得意」が見つかる長期インターン紹介｜バイブスインターン</title>
+  <meta name="description" content="大学1〜4年生・大学院生向けの長期インターン無料紹介サービス「バイブスインターン」。約160社から、あなたに合う1社を無料で紹介。1年生からOK。学生完全無料で、まずは30分の無料相談から。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            vred: { DEFAULT: '#D81617', dark: '#B80F10', light: '#F23A3C', pale: '#FDECEC' },
+            cream: '#F9F5F3',
+            ink: '#333333',
+          },
+          // FVの拡大は「横幅が広く、かつ縦も900px以上ある画面」だけに適用（ノートPCで1画面に収めるため）
+          screens: {
+            tall: { raw: '(min-width: 1280px) and (min-height: 900px)' },
+            tallxl: { raw: '(min-width: 1536px) and (min-height: 900px)' },
+          },
+          fontFamily: {
+            jp: ['"Noto Sans JP"', 'sans-serif'],
+            zen: ['"Zen Kaku Gothic New"', 'sans-serif'],
+            en: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root { --logo: url('https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpVBW1/s-300x123_9c8c1b49-2b57-4a43-80a4-cf3e6d673dfb.svg'); }
+    body { background: #D81617; }
+    .logo-pattern { position: relative; isolation: isolate; }
+    .logo-pattern::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      background-image: var(--logo); background-size: 150px auto; background-repeat: repeat;
+      opacity: .09; transform: rotate(-8deg) scale(1.3); pointer-events: none;
+    }
+    .label-box { display: inline-block; background: #fff; color: #D81617; padding: .15em .35em; line-height: 1.35; }
+    /* FV見出しの影付き特大文字 */
+    .headline-shadow { text-shadow: 4px 4px 0 #6e0809; }
+    @media (min-width: 1024px) { .headline-shadow { text-shadow: 6px 6px 0 #6e0809; } }
+    .label-box-red { display: inline-block; background: #D81617; color: #fff; padding: .15em .45em; line-height: 1.35; }
+
+    /* 流れるロゴ */
+    .marquee { display: flex; width: max-content; animation: marquee var(--dur, 60s) linear infinite; }
+    .marquee.reverse { animation-direction: reverse; }
+    .marquee-wrap:hover .marquee { animation-play-state: paused; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-wrap { mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+
+    /* 余白の多いイラストを切り抜く */
+    .crop { overflow: hidden; }
+    .crop img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.is-in { opacity: 1; transform: none; }
+    .bar { width: 0; transition: width 1.4s cubic-bezier(.2,.8,.2,1); }
+    .is-in .bar { width: var(--w); }
+    /* 追従CTAのボタンに数秒おきに光が走る（目を引くため） */
+    .sticky-btn::after {
+      content: ''; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+      background: linear-gradient(100deg, transparent, rgba(255,225,77,.55), transparent);
+      transform: skewX(-20deg); animation: shine 3.2s ease-in-out infinite; pointer-events: none;
+    }
+    @keyframes shine { 0%, 60% { left: -60%; } 100% { left: 130%; } }
+    details summary::-webkit-details-marker { display: none; }
+    details[open] .faq-icon { transform: rotate(45deg); }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee { animation: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .bar { width: var(--w); transition: none; }
+      .sticky-btn::after { animation: none; display: none; }
+    }
+  </style>
+</head>
+<body class="font-jp text-ink antialiased overflow-x-hidden">
+
+  <!-- ===== HEADER ===== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-vred/95 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 h-16 md:h-20 flex items-center justify-between gap-3">
+      <a href="#top" class="shrink-0">
+        <img src="https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpVBW1/s-300x123_9c8c1b49-2b57-4a43-80a4-cf3e6d673dfb.svg" alt="バイブスインターン" class="h-9 md:h-12 w-auto" />
+      </a>
+      <nav class="hidden lg:flex gap-5 text-white text-sm font-bold">
+        <a href="#merit" class="hover:opacity-70">アルバイトとの違い</a>
+        <a href="#goal" class="hover:opacity-70">できること</a>
+        <a href="#voice" class="hover:opacity-70">先輩の声</a>
+        <a href="#companies" class="hover:opacity-70">紹介企業</a>
+        <a href="#reason" class="hover:opacity-70">選ばれる理由</a>
+        <a href="#faq" class="hover:opacity-70">FAQ</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="#cta" data-booking="header" class="inline-flex items-center bg-white text-vred font-bold text-sm px-4 sm:px-5 py-2.5 rounded-full border-2 border-white hover:bg-transparent hover:text-white transition whitespace-nowrap">無料で相談してみる ›</a>
+        <button id="menu-btn" class="lg:hidden w-10 h-10 grid place-items-center text-white" aria-label="目次を開く" aria-expanded="false" aria-controls="menu">
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <!-- スマホ用 目次メニュー -->
+    <nav id="menu" class="lg:hidden hidden bg-vred border-t border-white/20">
+      <ol class="max-w-6xl mx-auto px-4 py-4 grid grid-cols-2 gap-2 text-white font-bold text-sm">
+        <li><a href="#problem" class="flex gap-2 py-2">就活のいま</a></li>
+        <li><a href="#merit" class="flex gap-2 py-2">アルバイトとの違い</a></li>
+        <li><a href="#goal" class="flex gap-2 py-2">できること</a></li>
+        <li><a href="#voice" class="flex gap-2 py-2">先輩の声</a></li>
+        <li><a href="#companies" class="flex gap-2 py-2">紹介企業</a></li>
+        <li><a href="#reason" class="flex gap-2 py-2">選ばれる理由</a></li>
+        <li><a href="#faq" class="flex gap-2 py-2">よくある質問</a></li>
+      </ol>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== FV ===== -->
+    <section class="logo-pattern overflow-clip pt-[4.5rem] md:pt-24 md:min-h-[100svh] md:flex md:items-center">
+      <div class="w-full max-w-6xl tall:max-w-7xl tallxl:max-w-[1440px] mx-auto px-4 pb-3 md:pb-10 grid md:grid-cols-[1fr_1.15fr] tall:grid-cols-[1.1fr_1fr] gap-2 md:gap-6 tall:gap-10 items-center">
+        <div class="relative z-10 text-white order-2 md:order-1">
+          <!-- 1. ラベル・メインコピー・サブコピー -->
+          <p class="inline-block bg-white text-vred font-bold text-[10px] sm:text-sm tall:text-base px-3 tall:px-4 py-0.5 sm:py-1 tall:py-1.5 rounded-full">大学1〜4年生・大学院生向け｜長期インターン無料紹介</p>
+          <h1 class="mt-2 md:mt-5 tall:mt-7 font-zen font-black leading-[1.3] tracking-wide text-[1.5rem] sm:text-[2.25rem] md:text-[2.1rem] lg:text-[3rem] tall:text-[3.4rem] tallxl:text-[3.8rem]">
+            <span class="block whitespace-nowrap leading-[1.25] text-[1.8rem] sm:text-[3rem] md:text-[2.8rem] lg:text-[4rem] tall:text-[4.5rem] tallxl:text-[5rem]"><span class="text-[#FFE14D] headline-shadow">「就活は3年から」</span></span>
+            <span class="block whitespace-nowrap">って思ってない？</span>
+            <span class="block whitespace-nowrap">それ、もう出遅れています。</span>
+          </h1>
+          <p class="mt-1.5 md:mt-4 tall:mt-6 font-bold text-[13px] md:text-base lg:text-lg tall:text-xl tallxl:text-2xl">約160社から、あなたに合う1社を無料で。<br class="sm:hidden" />1年生からOK。</p>
+
+          <!-- 2. ハッシュタグ（1セットのみ） -->
+          <ul class="mt-2 md:mt-5 tall:mt-6 flex flex-wrap gap-1.5 md:gap-2 tall:gap-3 text-[11px] md:text-sm tall:text-base tallxl:text-lg font-bold">
+            <li class="bg-[#FFE14D] text-ink rounded-full px-2.5 md:px-3.5 tall:px-4 py-1 tall:py-1.5">#学生完全無料</li>
+            <li class="bg-white text-vred rounded-full px-2.5 md:px-3.5 tall:px-4 py-1 tall:py-1.5">#1年生からOK</li>
+            <li class="bg-white text-vred rounded-full px-2.5 md:px-3.5 tall:px-4 py-1 tall:py-1.5">#導入企業約160社</li>
+          </ul>
+
+          <!-- 3. CTAボタン＋直下の補足 -->
+          <div class="mt-3 md:mt-7 tall:mt-9 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-5 tall:gap-7">
+            <a href="#cta" data-booking="fv" class="inline-flex justify-center items-center bg-white text-vred font-black text-base md:text-lg tall:text-xl tallxl:text-2xl px-8 tall:px-11 py-3 md:py-4 tall:py-5 rounded-full shadow-[0_6px_0_#8f0b0c] hover:translate-y-[2px] hover:shadow-[0_4px_0_#8f0b0c] transition">
+              無料で相談してみる ›
+            </a>
+          </div>
+          <p class="mt-1.5 md:mt-2.5 tall:mt-4 text-[12px] md:text-sm tall:text-base tallxl:text-lg font-bold text-center sm:text-left">30分で、あなたに合う企業がわかる</p>
+          <p class="mt-0.5 text-[11px] md:text-xs tall:text-sm tallxl:text-base font-bold opacity-90 text-center sm:text-left">オンライン／学生完全無料／話すだけでOK</p>
+
+          <!-- 4. 企業ロゴ6社＋「導入企業 約160社（一部）」（初期表示はHTML、JSで順番に入れ替え） -->
+          <div id="fv-logos" class="mt-3 md:mt-6 tall:mt-8 grid grid-cols-3 gap-1.5 md:gap-2 tall:gap-3 max-w-md tall:max-w-xl tallxl:max-w-2xl" aria-label="導入企業（一部）">
+            <div class="relative h-8 md:h-12 tall:h-16 tallxl:h-[4.5rem] bg-white border border-neutral-200 rounded-xl overflow-hidden transition-opacity duration-500"><img src="img/logos/image46.png" alt="ロート製薬" class="absolute inset-0 w-full h-full p-2 object-contain"></div>
+            <div class="relative h-8 md:h-12 tall:h-16 tallxl:h-[4.5rem] bg-white border border-neutral-200 rounded-xl overflow-hidden transition-opacity duration-500"><img src="img/logos/image55.png" alt="タカラスタンダード" class="absolute inset-0 w-full h-full p-2 object-contain"></div>
+            <div class="relative h-8 md:h-12 tall:h-16 tallxl:h-[4.5rem] bg-white border border-neutral-200 rounded-xl overflow-hidden transition-opacity duration-500"><img src="img/logos/image35.png" alt="レバレジーズ" class="absolute inset-0 w-full h-full p-2 object-contain"></div>
+            <div class="relative h-8 md:h-12 tall:h-16 tallxl:h-[4.5rem] bg-white border border-neutral-200 rounded-xl overflow-hidden transition-opacity duration-500"><img src="img/logos/image67.png" alt="スーパーホテル" class="absolute inset-0 w-full h-full p-2 object-contain"></div>
+            <div class="relative h-8 md:h-12 tall:h-16 tallxl:h-[4.5rem] bg-white border border-neutral-200 rounded-xl overflow-hidden transition-opacity duration-500"><img src="img/logos/job_toyotaunited.png" alt="トヨタユナイテッド奈良" class="absolute inset-0 w-full h-full p-2 object-contain"></div>
+            <div class="relative h-8 md:h-12 tall:h-16 tallxl:h-[4.5rem] bg-white border border-neutral-200 rounded-xl overflow-hidden transition-opacity duration-500"><img src="img/logos/image51.png" alt="DYM" class="absolute inset-0 w-full h-full p-2 object-contain"></div>
+          </div>
+          <p class="mt-1 tall:mt-2 max-w-md tall:max-w-xl tallxl:max-w-2xl text-[10px] md:text-xs tall:text-sm font-bold opacity-90 text-right">導入企業 約160社（一部）</p>
+        </div>
+
+        <!-- キービジュアル（スマホは上に小さく、PCは右にはみ出させて大きく見せる） -->
+        <div class="relative order-1 md:order-2 lg:-mr-10 xl:-mr-16 2xl:-mr-32">
+          <!-- js/kv.js で描画、背景透過 -->
+          <div id="kv" class="w-[48%] mx-auto md:w-full [&>svg]:w-full [&>svg]:h-auto [&>svg]:block"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 01 就活のいま ===== -->
+    <section id="problem" class="logo-pattern overflow-clip pt-10 pb-20 md:py-28 scroll-mt-16">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center text-white reveal">
+          <p class="font-en font-bold tracking-wider">01 ─ PROBLEM</p>
+          <h2 class="mt-1 md:mt-2 font-zen font-black text-[1.7rem] sm:text-5xl leading-tight">「就活はなるようになる」<br />「3年からで大丈夫」と<br />思ってませんか？</h2>
+        </div>
+
+        <div class="mt-6 md:mt-12 bg-white rounded-[28px] p-6 sm:p-10 reveal">
+          <div class="grid md:grid-cols-[1fr_1.3fr] gap-8 items-center">
+            <div class="text-center md:text-left">
+              <p class="font-bold text-vred">就活はもう、大学2年生から始まっている</p>
+              <p class="mt-2 font-zen font-black leading-none">
+                <span class="text-6xl sm:text-7xl text-vred">2</span><span class="text-2xl">人に</span><span class="text-6xl sm:text-7xl text-vred">1</span><span class="text-2xl">人</span>
+              </p>
+              <p class="mt-3 font-zen font-black text-lg sm:text-xl">が、低学年のうちに動き出している</p>
+              <p class="mt-4 font-bold text-sm sm:text-base">行きたい企業から合格をもらっている学生は、<br class="hidden sm:inline" /><span class="text-vred">早くから動いています。</span></p>
+              <p class="mt-2 text-sm text-neutral-600">後回しにするほど、選べる選択肢は減っていきます。</p>
+            </div>
+            <figure>
+              <figcaption class="text-sm font-bold text-center">低学年（大学1・2年）時にキャリア形成支援活動に参加した経験</figcaption>
+              <div class="mt-5 space-y-5">
+                <div>
+                  <div class="flex justify-between text-sm font-bold"><span>2026年卒</span><span class="text-vred font-en text-lg">47.2%</span></div>
+                  <div class="mt-1 h-7 rounded-full bg-neutral-200 overflow-hidden"><div class="bar h-full bg-vred rounded-full" style="--w:47.2%"></div></div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm font-bold"><span>2025年卒</span><span class="text-neutral-500 font-en text-lg">42.7%</span></div>
+                  <div class="mt-1 h-7 rounded-full bg-neutral-200 overflow-hidden"><div class="bar h-full bg-vred/50 rounded-full" style="--w:42.7%"></div></div>
+                </div>
+              </div>
+              <p class="mt-4 text-[11px] text-neutral-500">出典：マイナビ「2026年卒 大学生インターンシップ・就職活動準備実態調査（4月）」</p>
+            </figure>
+          </div>
+        </div>
+        <!-- 後回しにした学生の末路 -->
+        <div class="mt-6 md:mt-10 bg-ink text-white rounded-[28px] p-6 sm:p-10 reveal">
+          <p class="text-center font-zen font-black text-lg sm:text-2xl">就活を後回しにした学生の、<br class="sm:hidden" /><span class="text-[#ff6b6b]">よくある末路</span></p>
+          <ul class="mt-5 grid md:grid-cols-3 gap-3 md:gap-5 text-sm sm:text-base font-bold">
+            <li class="flex md:flex-col gap-3 items-start bg-white/10 rounded-2xl p-4 md:p-5">
+              <svg class="shrink-0 w-8 h-8" viewBox="0 0 24 24" role="img" aria-label="危険"><path d="M12 2.5 22.5 20.5h-21z" fill="#FFE14D" stroke="#FFE14D" stroke-width="2" stroke-linejoin="round"/><path d="M12 9v5.5" stroke="#333" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.4" fill="#333"/></svg>
+              <span>3年生になって就活を始めたものの、<span class="text-[#ff6b6b]">面接で何を話せばいいか分からない</span></span>
+            </li>
+            <li class="flex md:flex-col gap-3 items-start bg-white/10 rounded-2xl p-4 md:p-5">
+              <svg class="shrink-0 w-8 h-8" viewBox="0 0 24 24" role="img" aria-label="危険"><path d="M12 2.5 22.5 20.5h-21z" fill="#FFE14D" stroke="#FFE14D" stroke-width="2" stroke-linejoin="round"/><path d="M12 9v5.5" stroke="#333" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.4" fill="#333"/></svg>
+              <span>ガクチカで話せるのは、<span class="text-[#ff6b6b]">お小遣い稼ぎのアルバイトだけ</span></span>
+            </li>
+            <li class="flex md:flex-col gap-3 items-start bg-white/10 rounded-2xl p-4 md:p-5">
+              <svg class="shrink-0 w-8 h-8" viewBox="0 0 24 24" role="img" aria-label="危険"><path d="M12 2.5 22.5 20.5h-21z" fill="#FFE14D" stroke="#FFE14D" stroke-width="2" stroke-linejoin="round"/><path d="M12 9v5.5" stroke="#333" stroke-width="2.4" stroke-linecap="round"/><circle cx="12" cy="17.6" r="1.4" fill="#333"/></svg>
+              <span>周りの友達は順調に進んでいるのに、<span class="text-[#ff6b6b]">自分だけ書類で落ちてしまう</span></span>
+            </li>
+          </ul>
+        </div>
+        <p class="mt-10 text-center text-white font-zen font-black text-2xl sm:text-3xl reveal">こんな未来にならないために、<br /><span class="label-box mt-2">今、長期インターン</span>を<br class="sm:hidden" />始めよう。</p>
+      </div>
+    </section>
+
+    <!-- ===== 02 長期インターンの魅力（① 良いところの可視化） ===== -->
+    <section id="merit" class="bg-white rounded-t-[48px] md:rounded-t-[80px] pt-16 md:pt-24 pb-20 md:pb-28 scroll-mt-16">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center reveal">
+          <p class="font-en font-bold text-vred tracking-wider">02 ─ MERIT</p>
+          <h2 class="mt-1 font-zen font-black text-3xl sm:text-4xl">長期インターンで<br class="sm:hidden" /><span class="text-vred">手に入る3つのこと</span></h2>
+          <div class="mx-auto mt-4 w-32 h-1 bg-vred"></div>
+          <p class="mt-6 font-bold text-sm sm:text-base">3か月以上、社員と同じ現場で働く長期インターン。<br class="hidden sm:inline" />学生のうちに、これだけのものが手に入ります。</p>
+        </div>
+
+        <!-- 3つのメリット（スマホは横並びのコンパクトな行、PCは3カラムのカード） -->
+        <div class="mt-8 md:mt-12 grid md:grid-cols-3 gap-3 md:gap-4">
+          <div class="bg-vred text-white rounded-2xl md:rounded-3xl p-4 md:p-6 flex md:block items-center gap-4 reveal">
+            <p class="shrink-0 font-en font-black text-3xl md:text-5xl opacity-40">01</p>
+            <div>
+              <h3 class="md:mt-2 font-zen font-black text-lg md:text-2xl">実務スキル</h3>
+              <p class="mt-1 md:mt-3 text-xs md:text-sm font-medium leading-relaxed">営業・マーケティング・企画・エンジニア。<span class="hidden md:inline">本物の仕事で、</span>社会で通用するスキルが身につく。</p>
+            </div>
+          </div>
+          <div class="bg-vred text-white rounded-2xl md:rounded-3xl p-4 md:p-6 flex md:block items-center gap-4 reveal">
+            <p class="shrink-0 font-en font-black text-3xl md:text-5xl opacity-40">02</p>
+            <div>
+              <h3 class="md:mt-2 font-zen font-black text-lg md:text-2xl">自分に合う仕事</h3>
+              <p class="mt-1 md:mt-3 text-xs md:text-sm font-medium leading-relaxed">実際に働くから、得意・苦手・やりたいことが分かる。<span class="hidden md:inline">キャリアの方向性が明確に。</span></p>
+            </div>
+          </div>
+          <div class="bg-vred text-white rounded-2xl md:rounded-3xl p-4 md:p-6 flex md:block items-center gap-4 reveal">
+            <p class="shrink-0 font-en font-black text-3xl md:text-5xl opacity-40">03</p>
+            <div>
+              <h3 class="md:mt-2 font-zen font-black text-lg md:text-2xl">就活の武器と人脈</h3>
+              <p class="mt-1 md:mt-3 text-xs md:text-sm font-medium leading-relaxed">企業によっては早期選考や選考優遇につながることも。<span class="hidden md:inline">社会人・経営者と働いた経験が、ガクチカになります。</span></p>
+            </div>
+          </div>
+        </div>
+        <p class="mt-5 text-center text-sm md:text-base font-bold reveal">営業×マーケティング×企画、<br class="sm:hidden" />複数の実務を経験できるのも長期インターンならでは。</p>
+
+        <!-- VS 図解 -->
+        <h3 class="mt-14 md:mt-20 text-center font-zen font-black text-2xl sm:text-3xl reveal">バイトするなら、<br class="sm:hidden" /><span class="text-vred">長期インターン</span>の時代</h3>
+
+        <!-- スマホ：左右比較の表 -->
+        <div class="md:hidden mt-6 rounded-2xl overflow-hidden border-2 border-vred text-[12px] reveal">
+          <div class="grid grid-cols-[2.75rem_1fr_1.15fr] font-zen font-black text-center">
+            <div class="bg-cream"></div>
+            <div class="bg-neutral-200 text-neutral-600 py-2.5">アルバイト</div>
+            <div class="bg-vred text-white py-2.5 relative">長期インターン<span class="absolute -top-0 right-1 text-[10px] text-[#FFE14D]">★</span></div>
+          </div>
+          <dl class="divide-y divide-vred/15">
+            <div class="grid grid-cols-[2.75rem_1fr_1.15fr]"><dt class="bg-cream text-vred font-bold text-[11px] grid place-items-center">稼ぎ方</dt><dd class="px-2 py-2.5 leading-snug text-neutral-500">時間の切り売り</dd><dd class="px-2 py-2.5 leading-snug bg-vred-pale font-bold">自分の価値を高めながら稼ぐ</dd></div>
+            <div class="grid grid-cols-[2.75rem_1fr_1.15fr]"><dt class="bg-cream text-vred font-bold text-[11px] grid place-items-center">仕事</dt><dd class="px-2 py-2.5 leading-snug text-neutral-500">マニュアル作業</dd><dd class="px-2 py-2.5 leading-snug bg-vred-pale font-bold">課題を見つけ、提案し、実行する</dd></div>
+            <div class="grid grid-cols-[2.75rem_1fr_1.15fr]"><dt class="bg-cream text-vred font-bold text-[11px] grid place-items-center">スキル</dt><dd class="px-2 py-2.5 leading-snug text-neutral-500">積み上げは限定的</dd><dd class="px-2 py-2.5 leading-snug bg-vred-pale font-bold">営業・マーケティング等の実務</dd></div>
+            <div class="grid grid-cols-[2.75rem_1fr_1.15fr]"><dt class="bg-cream text-vred font-bold text-[11px] grid place-items-center">人脈</dt><dd class="px-2 py-2.5 leading-snug text-neutral-500">同年代の学生</dd><dd class="px-2 py-2.5 leading-snug bg-vred-pale font-bold">社会人・経営者と働く</dd></div>
+          </dl>
+        </div>
+
+        <!-- PC：VSカード -->
+        <div class="hidden md:grid mt-8 relative grid-cols-2 gap-10 reveal">
+          <div class="bg-neutral-100 rounded-3xl p-6 sm:p-8">
+            <div class="flex items-center gap-3">
+              <div><h4 class="font-zen font-black text-xl text-neutral-600">アルバイト</h4><p class="text-xs font-bold text-neutral-500">時間を切り売りして稼ぐ</p></div>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm">
+              <li class="bg-white rounded-xl p-4"><p class="font-bold">与えられた業務</p><p class="text-neutral-500 text-xs mt-1">マニュアル通りの作業が中心</p></li>
+              <li class="bg-white rounded-xl p-4"><p class="font-bold">接客・軽作業</p><p class="text-neutral-500 text-xs mt-1">スキルとしての積み上げは限定的</p></li>
+              <li class="bg-white rounded-xl p-4"><p class="font-bold">同年代中心</p><p class="text-neutral-500 text-xs mt-1">学生同士のコミュニティ</p></li>
+            </ul>
+          </div>
+          <div class="md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-10 mx-auto -my-8 md:my-0 w-20 h-20 rounded-full bg-vred text-white grid place-items-center font-en font-black italic text-3xl border-4 border-white shadow-lg">VS</div>
+          <div class="bg-vred-pale rounded-3xl p-6 sm:p-8 relative">
+            <span class="absolute -top-3 right-5 bg-vred text-white text-xs font-bold px-3 py-1 rounded-full">★ 推奨</span>
+            <div class="flex items-center gap-3">
+              <div><h4 class="font-zen font-black text-xl text-vred">長期インターン</h4><p class="text-xs font-bold text-vred">自分の価値を高めながら稼ぐ</p></div>
+            </div>
+            <ul class="mt-6 space-y-3 text-sm">
+              <li class="bg-white rounded-xl p-4 border-l-4 border-vred">
+                <p class="font-bold">能動的なプロセス</p>
+                <div class="mt-2 flex items-center gap-1 text-xs font-bold">
+                  <span class="bg-vred-pale text-vred rounded px-2 py-1">課題を見つける</span><span class="text-vred">›</span>
+                  <span class="bg-vred-pale text-vred rounded px-2 py-1">提案する</span><span class="text-vred">›</span>
+                  <span class="bg-vred-pale text-vred rounded px-2 py-1">実行する</span>
+                </div>
+              </li>
+              <li class="bg-white rounded-xl p-4 border-l-4 border-vred"><p class="font-bold">実務スキル獲得</p><p class="text-neutral-500 text-xs mt-1">営業・マーケティング・企画・エンジニア</p></li>
+              <li class="bg-white rounded-xl p-4 border-l-4 border-vred"><p class="font-bold">社会人・経営者と働く</p><p class="text-neutral-500 text-xs mt-1">視野が広がり、将来の選択肢が増える</p></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-6 bg-vred text-white rounded-2xl px-5 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 reveal">
+          <p class="font-zen font-black text-base sm:text-lg text-center sm:text-left">すべて、<span class="text-[#FFE14D]">大学1年生から</span>始められます。</p>
+          <span class="bg-white text-vred font-bold text-sm px-4 py-1.5 rounded-full">学業との両立もOK！</span>
+        </div>
+
+        <!-- 映える就活 → お付き合い -->
+        <div class="mt-14 md:mt-20 bg-white border-2 border-vred/20 rounded-[28px] p-6 sm:p-10 reveal">
+          <h3 class="text-center font-zen font-black text-2xl sm:text-3xl">就職 <span class="text-vred">≒</span> 結婚</h3>
+          <p class="mt-3 text-center font-bold text-sm sm:text-base">求人や面接で分かるのは<span class="text-vred">表面だけ</span>。</p>
+          <div class="mt-6 grid grid-cols-[1fr_auto_1fr] gap-2 sm:gap-6 items-center text-center">
+            <div>
+              <p class="inline-block bg-vred text-white text-xs sm:text-sm font-bold px-3 py-1 rounded">企業</p>
+              <p class="mt-2 font-zen font-black text-vred text-base sm:text-xl">条件・福利厚生など</p>
+            </div>
+            <div class="flex flex-col gap-2 w-12 sm:w-28" aria-hidden="true">
+              <svg viewBox="0 0 100 12" class="w-full text-vred"><path d="M0 6h90" stroke="currentColor" stroke-width="4"/><path d="M88 0l12 6-12 6z" fill="currentColor"/></svg>
+              <svg viewBox="0 0 100 12" class="w-full text-vred"><path d="M10 6h90" stroke="currentColor" stroke-width="4"/><path d="M12 0L0 6l12 6z" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <p class="inline-block bg-vred text-white text-xs sm:text-sm font-bold px-3 py-1 rounded">学生</p>
+              <p class="mt-2 font-zen font-black text-vred text-base sm:text-xl">面接で受かる<br class="sm:hidden" />ための受け答え</p>
+            </div>
+          </div>
+          <div class="mt-4 border-t-2 border-dashed border-sky-400 relative">
+            <span class="absolute -top-3 right-0 bg-white px-2 text-[11px] text-sky-500 font-bold">見えているのはここだけ</span>
+          </div>
+          <div class="mt-4 rounded-2xl bg-vred-pale border-2 border-vred p-4 sm:p-6 grid grid-cols-3 items-center text-center gap-2">
+            <p class="font-zen font-black text-sm sm:text-lg">リアルな<br />職場・文化</p>
+            <p class="font-zen font-black text-vred text-base sm:text-2xl">本来<br />知りたい部分</p>
+            <p class="font-zen font-black text-sm sm:text-lg">リアルな<br />性格・能力</p>
+          </div>
+          <p class="mt-6 text-center font-zen font-black text-lg sm:text-xl">中身を知るには、<br class="sm:hidden" /><span class="label-box-red mx-1">一緒に働く</span>のが一番早い。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 03 バイブスインターンでできること（③ 学生のゴール） ===== -->
+    <section id="goal" class="logo-pattern overflow-clip py-20 md:py-28 scroll-mt-16">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center text-white reveal">
+          <p class="font-en font-bold tracking-wider">03 ─ GOAL</p>
+          <h2 class="mt-2 font-zen font-black text-3xl sm:text-5xl leading-tight">バイブスインターンで<br /><span class="label-box mt-2">あなたが変わる未来</span></h2>
+        </div>
+
+        <!-- Before → After -->
+        <div class="mt-12 grid md:grid-cols-[1fr_auto_1.4fr] gap-4 items-stretch reveal">
+          <div class="bg-white/15 border-2 border-white/40 rounded-3xl p-6 text-white">
+            <p class="font-en font-black text-sm tracking-wider opacity-80">BEFORE</p>
+            <p class="mt-1 font-zen font-black text-xl">いまのあなた</p>
+            <ul class="mt-4 space-y-2 text-sm font-bold">
+              <li class="bg-white/15 rounded-lg px-3 py-2">将来が不安、何をすべきか分からない</li>
+              <li class="bg-white/15 rounded-lg px-3 py-2">自分に合う仕事が分からない</li>
+              <li class="bg-white/15 rounded-lg px-3 py-2">何が正しい選択か分からない</li>
+            </ul>
+          </div>
+          <div class="grid place-items-center text-white font-zen font-black text-4xl rotate-90 md:rotate-0 py-2" aria-hidden="true">➜</div>
+          <div class="bg-white rounded-3xl p-6">
+            <p class="font-en font-black text-sm tracking-wider text-vred">AFTER</p>
+            <p class="mt-1 font-zen font-black text-xl">バイブスインターンを使うと</p>
+            <ul class="mt-4 space-y-3">
+              <li class="flex gap-3 items-start"><span class="shrink-0 w-8 h-8 rounded-full bg-vred text-white grid place-items-center font-black">1</span><p><span class="font-zen font-black text-lg text-vred">将来の不安がなくなる</span><span class="block text-xs text-neutral-600">30分の面談で、不安をひとつずつ解消していきます</span></p></li>
+              <li class="flex gap-3 items-start"><span class="shrink-0 w-8 h-8 rounded-full bg-vred text-white grid place-items-center font-black">2</span><p><span class="font-zen font-black text-lg text-vred">向いている仕事がはっきり分かる</span><span class="block text-xs text-neutral-600">実際に働いた経験から“本当の自己分析”ができる</span></p></li>
+              <li class="flex gap-3 items-start"><span class="shrink-0 w-8 h-8 rounded-full bg-vred text-white grid place-items-center font-black">3</span><p><span class="font-zen font-black text-lg text-vred">納得できるキャリアを選べる</span><span class="block text-xs text-neutral-600">実務経験を武器に、後悔しない新卒就活へ</span></p></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 目標から逆算 -->
+        <div class="mt-8 bg-white rounded-[28px] p-6 sm:p-10 reveal">
+          <h3 class="text-center font-zen font-black text-2xl sm:text-3xl">「なりたい自分」から<span class="text-vred">逆算</span>する</h3>
+          <div class="mt-8 max-w-md mx-auto">
+            <div class="rounded-2xl border-2 border-vred bg-vred-pale p-4 text-center">
+              <p class="font-zen font-black text-lg"><span class="text-vred">理想</span>の自分</p>
+              <p class="text-xs font-bold text-neutral-600">なりたい姿・達成したい目標</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4 my-3 text-xs font-bold text-center">
+              <p class="text-vred">↓ 目標から逆算</p>
+              <p class="text-vred">↑ 長期インターンで埋める</p>
+            </div>
+            <div class="rounded-2xl bg-neutral-100 p-4 text-center">
+              <p class="font-zen font-black text-lg">現在の自分</p>
+              <p class="text-xs font-bold text-neutral-600">スキル・経験にギャップ</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4ステップ -->
+        <div id="step" class="mt-16 scroll-mt-24">
+          <h3 class="text-center text-white font-zen font-black text-2xl sm:text-3xl reveal">ゴールまでの<span class="label-box">4ステップ</span></h3>
+          <ol class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <li class="bg-white rounded-2xl p-6 relative reveal">
+              <p class="font-en font-black text-vred text-sm">STEP <span class="text-4xl">01</span></p>
+              <h4 class="mt-3"><span class="label-box-red font-zen font-black text-lg">初回面談</span></h4>
+              <p class="mt-4 text-sm leading-relaxed font-medium">なりたい自分・仕事選びの軸を一緒に整理。まだ何も決まってなくてOK。</p>
+              <span class="hidden lg:grid absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#FFE14D] text-ink place-items-center font-black z-10" aria-hidden="true">›</span>
+            </li>
+            <li class="bg-white rounded-2xl p-6 relative reveal">
+              <p class="font-en font-black text-vred text-sm">STEP <span class="text-4xl">02</span></p>
+              <h4 class="mt-3"><span class="label-box-red font-zen font-black text-lg">企業紹介＆選考対策</span></h4>
+              <p class="mt-4 text-sm leading-relaxed font-medium">約160社からあなたに合う企業をピックアップ。書類・面接対策もサポート。</p>
+              <span class="hidden lg:grid absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#FFE14D] text-ink place-items-center font-black z-10" aria-hidden="true">›</span>
+            </li>
+            <li class="bg-white rounded-2xl p-6 relative reveal">
+              <p class="font-en font-black text-vred text-sm">STEP <span class="text-4xl">03</span></p>
+              <h4 class="mt-3"><span class="label-box-red font-zen font-black text-lg">インターン開始＋伴走</span></h4>
+              <p class="mt-4 text-sm leading-relaxed font-medium">キックオフミーティングで目標設定。定期面談で、成長を振り返り、悩みを相談できます。</p>
+              <span class="hidden lg:grid absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#FFE14D] text-ink place-items-center font-black z-10" aria-hidden="true">›</span>
+            </li>
+            <li class="bg-[#FFE14D] rounded-2xl p-6 reveal">
+              <p class="font-en font-black text-sm">GOAL <span class="text-4xl">04</span></p>
+              <h4 class="mt-3"><span class="label-box-red font-zen font-black text-lg">納得のキャリア決定</span></h4>
+              <p class="mt-4 text-sm leading-relaxed font-medium">実務経験を武器に新卒就活へ。納得できる仕事を選べます。</p>
+            </li>
+          </ol>
+        </div>
+
+        <!-- 学生の声（4ステップの直後＝「使うとこうなる」の実例）
+             見出し（太字1行）は要約、「」内は本人のコメント原文 -->
+        <div id="voice" class="mt-16 scroll-mt-24">
+          <h3 class="text-center text-white font-zen font-black text-2xl sm:text-3xl reveal">バイブスインターンで<br class="sm:hidden" /><span class="label-box">変わった先輩たち</span></h3>
+          <div class="mt-8 -mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-3 md:grid md:grid-cols-3 md:overflow-visible md:mx-0 md:px-0 reveal">
+            <article class="shrink-0 w-[85%] sm:w-[60%] md:w-auto snap-center bg-white rounded-3xl p-5 flex flex-col">
+              <div class="flex items-center gap-3">
+                <span class="shrink-0 w-14 h-14 rounded-full bg-vred text-white grid place-items-center font-en font-black text-lg" aria-hidden="true">S.S</span>
+                <div><p class="font-zen font-black">S.Sさん</p><p class="text-[11px] md:text-xs font-bold text-neutral-500 whitespace-nowrap">近畿大学3年<br />エンジニアインターン</p></div>
+              </div>
+              <p class="mt-4 font-zen font-black text-lg text-vred leading-snug">文系から、エンジニア就職へ</p>
+              <div class="mt-3 space-y-2 text-sm font-bold">
+                <p class="bg-neutral-100 rounded-lg px-3 py-2"><span class="text-[10px] text-neutral-500 block font-en">BEFORE</span>文系の学部出身だが、エンジニアの就職を叶えたかった。</p>
+                <p class="bg-vred-pale rounded-lg px-3 py-2"><span class="text-[10px] text-vred block font-en">AFTER</span>ITスキルを身につけ、インターン先の会社で内定！エンジニアとして就職できた。</p>
+              </div>
+              <p class="mt-4 text-sm leading-relaxed text-neutral-700">「キャリアに詳しい方のアドバイスとインターンをすることによって、諦めていた道を手繰り寄せることができました！バイブスインターンを使って良かったです。」</p>
+            </article>
+            <article class="shrink-0 w-[85%] sm:w-[60%] md:w-auto snap-center bg-white rounded-3xl p-5 flex flex-col">
+              <div class="flex items-center gap-3">
+                <span class="shrink-0 w-14 h-14 rounded-full bg-vred text-white grid place-items-center font-en font-black text-lg" aria-hidden="true">M.R</span>
+                <div><p class="font-zen font-black">M.Rさん</p><p class="text-[11px] md:text-xs font-bold text-neutral-500 whitespace-nowrap">同志社大学3年<br />営業インターン</p></div>
+              </div>
+              <p class="mt-4 font-zen font-black text-lg text-vred leading-snug">アルバイトの時間を、スキルが身につく時間に</p>
+              <div class="mt-3 space-y-2 text-sm font-bold">
+                <p class="bg-neutral-100 rounded-lg px-3 py-2"><span class="text-[10px] text-neutral-500 block font-en">BEFORE</span>アルバイトばかりに明け暮れていました。</p>
+                <p class="bg-vred-pale rounded-lg px-3 py-2"><span class="text-[10px] text-vred block font-en">AFTER</span>アルバイトの代わりに、給与のある長期インターンを始めました。</p>
+              </div>
+              <p class="mt-4 text-sm leading-relaxed text-neutral-700">「お給料も貰えて、同時にスキルも付き、インターン先で沢山の仲間とも出会うことができました！納得のいく就活ができ、スキルがつく点では絶対にやってて損は無いと思います。」</p>
+            </article>
+            <article class="shrink-0 w-[85%] sm:w-[60%] md:w-auto snap-center bg-white rounded-3xl p-5 flex flex-col">
+              <div class="flex items-center gap-3">
+                <span class="shrink-0 w-14 h-14 rounded-full bg-vred text-white grid place-items-center font-en font-black text-lg" aria-hidden="true">T.K</span>
+                <div><p class="font-zen font-black">T.Kさん</p><p class="text-[11px] md:text-xs font-bold text-neutral-500 whitespace-nowrap">関西大学2年<br />事業開発・企画インターン</p></div>
+              </div>
+              <p class="mt-4 font-zen font-black text-lg text-vred leading-snug">大学とサークルの往復から、新規事業のリーダーへ</p>
+              <div class="mt-3 space-y-2 text-sm font-bold">
+                <p class="bg-neutral-100 rounded-lg px-3 py-2"><span class="text-[10px] text-neutral-500 block font-en">BEFORE</span>サークルと大学の往復でした。</p>
+                <p class="bg-vred-pale rounded-lg px-3 py-2"><span class="text-[10px] text-vred block font-en">AFTER</span>新規事業の立ち上げメンバーとして、ベンチャー企業でインターンを始めました。</p>
+              </div>
+              <p class="mt-4 text-sm leading-relaxed text-neutral-700">「なんとなくで生きていた大学生活でしたが、会社を立ち上げるという点にインターン生として参加し、今では他のインターン生を束ねるリーダーをしています！バイブスインターンの面談を気軽に受けた事がきっかけになりました。」</p>
+            </article>
+          </div>
+          <p class="md:hidden mt-1 text-center text-[11px] font-bold text-white/80">← 横にスワイプ →</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 04 紹介企業（④ どこに行けるか） ===== -->
+    <section id="companies" class="bg-white rounded-t-[48px] md:rounded-t-[80px] pt-16 md:pt-24 pb-20 md:pb-28 scroll-mt-16">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center reveal">
+          <p class="font-en font-bold text-vred tracking-wider">04 ─ COMPANIES</p>
+          <h2 class="mt-1 font-zen font-black text-3xl sm:text-4xl">約160社の中から、<br class="sm:hidden" /><span class="text-vred">あなたに合う1社</span>を</h2>
+          <div class="mx-auto mt-4 w-32 h-1 bg-vred"></div>
+          <p class="mt-6 font-bold text-sm sm:text-base">主体性のある学生を求める企業だけを紹介しています。</p>
+        </div>
+
+        <!-- ロゴウォール -->
+        <div class="mt-10 reveal">
+          <div id="logo-wall" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 sm:gap-3"></div>
+          <div class="mt-6 text-center">
+            <button id="wall-more" class="inline-flex items-center gap-2 border-2 border-vred text-vred font-bold px-6 py-2.5 rounded-full hover:bg-vred hover:text-white transition">紹介企業をもっと見る ›</button>
+            <p class="mt-3 text-xs text-neutral-500">※ 掲載は導入企業の一部です。募集状況は時期により異なります。</p>
+          </div>
+        </div>
+
+        <!-- 職種 -->
+        <div class="mt-16 reveal">
+          <h3 class="text-center font-zen font-black text-2xl sm:text-3xl"><span class="label-box-red">こんな仕事に挑戦できる</span></h3>
+          <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="bg-cream rounded-2xl p-5 text-center"><p class="font-zen font-black text-lg">営業</p><p class="text-xs text-neutral-600 mt-1">提案力・コミュ力が鍛えられる</p></div>
+            <div class="bg-cream rounded-2xl p-5 text-center"><p class="font-zen font-black text-lg">マーケティング</p><p class="text-xs text-neutral-600 mt-1">数字と発信で人を動かす</p></div>
+            <div class="bg-cream rounded-2xl p-5 text-center"><p class="font-zen font-black text-lg">企画</p><p class="text-xs text-neutral-600 mt-1">0から1をつくる</p></div>
+            <div class="bg-cream rounded-2xl p-5 text-center"><p class="font-zen font-black text-lg">エンジニア</p><p class="text-xs text-neutral-600 mt-1">プロダクトを開発する</p></div>
+          </div>
+          <p class="mt-4 text-center text-sm font-bold text-neutral-600">ほかにも、あなたの目標に合わせた職種を提案します。</p>
+        </div>
+
+        <!-- 厳選基準 -->
+        <div class="mt-16 bg-vred-pale rounded-[28px] p-6 sm:p-10 reveal">
+          <h3 class="text-center font-zen font-black text-2xl sm:text-3xl">“とりあえず大手”じゃなく、<br /><span class="text-vred">仕事が楽しい</span>と思える会社を</h3>
+          <p class="mt-4 text-center font-bold text-sm sm:text-base">人生の1/3は、働く時間。<br class="sm:hidden" />その時間が「楽しい」になる会社を紹介します。</p>
+          <div class="mt-8 grid md:grid-cols-2 gap-6">
+            <div>
+              <p class="font-bold text-sm text-neutral-500">大手思考の罠</p>
+              <ul class="mt-3 space-y-2 text-sm">
+                <li class="bg-white rounded-xl p-3">✕ 「やりたいこと」より「大手に入ること」が目的に</li>
+                <li class="bg-white rounded-xl p-3">✕ 知名度・親の安心など“他人の評価”で選んでしまう</li>
+                <li class="bg-white rounded-xl p-3">✕ 分業が進み、若手は「決められた仕事」だけになりがち</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-bold text-sm text-vred">バイブスインターンが紹介する企業</p>
+              <ul class="mt-3 space-y-2 text-sm font-bold">
+                <li class="bg-white rounded-xl p-3 border-l-4 border-vred">◎ 学歴より「やってみたい」を評価してくれる</li>
+                <li class="bg-white rounded-xl p-3 border-l-4 border-vred">◎ 学生でも任される。だから楽しいし、伸びる</li>
+                <li class="bg-white rounded-xl p-3 border-l-4 border-vred">◎ 「楽しい」の先に、やりがいと成長がある</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 05 選ばれる理由（② 学生からの信頼） ===== -->
+    <section id="reason" class="logo-pattern overflow-clip py-20 md:py-28 scroll-mt-16">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="text-center text-white reveal">
+          <p class="font-en font-bold tracking-wider">05 ─ REASON</p>
+          <h2 class="mt-2 font-zen font-black text-3xl sm:text-5xl leading-tight">バイブスインターンが<br /><span class="label-box mt-2">選ばれる理由</span></h2>
+        </div>
+
+        <!-- 実績・メディア -->
+        <div class="mt-12 bg-white rounded-[28px] p-6 sm:p-10 reveal">
+          <h3 class="font-zen font-black text-xl sm:text-2xl"><span class="text-vred font-en mr-2">01</span>メディアでも話題の会社が運営</h3>
+          <p class="mt-2 text-sm font-medium">ニュース番組や『相席食堂』などのバラエティ番組に、40回以上出演しています。主催イベントは累計3,000名を動員しています。</p>
+          <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
+            <img src="img/media/image21.png" alt="長期インターンを紹介するニュース番組" class="w-full aspect-video object-cover rounded-lg" />
+            <img src="img/media/image63.jpg" alt="イベント登壇の様子" class="w-full aspect-video object-cover rounded-lg" />
+            <img src="img/media/image17.jpg" alt="主催イベントの集合写真" class="w-full aspect-video object-cover rounded-lg" />
+            <img src="img/media/image15.jpg" alt="バラエティー番組出演" class="w-full aspect-video object-cover rounded-lg" />
+            <img src="img/media/image6.jpg" alt="MBSニュースでの紹介" class="w-full aspect-video object-cover rounded-lg" />
+            <img src="img/media/image38.jpg" alt="ニュース番組のインタビュー" class="w-full aspect-video object-cover rounded-lg" />
+          </div>
+        </div>
+
+        <!-- 伴走 -->
+        <div class="mt-6 bg-white rounded-[28px] p-6 sm:p-10 reveal">
+          <div class="flex items-start justify-between gap-4">
+            <h3 class="font-zen font-black text-xl sm:text-2xl"><span class="text-vred font-en mr-2">02</span>紹介して終わりじゃない、伴走型サポート</h3>
+            <div class="crop hidden sm:block w-28 h-20 shrink-0"><img src="img/illust/image129.png" alt="" style="transform:scale(1.1)" /></div>
+          </div>
+          <div class="mt-6 grid md:grid-cols-2 gap-6">
+            <div>
+              <p class="text-sm font-bold text-neutral-500 text-center">よくあるインターン紹介</p>
+              <ol class="mt-3 space-y-1.5 text-sm font-bold text-center">
+                <li class="rounded-lg py-2 bg-neutral-100 text-neutral-400">自己分析・方針を決める</li>
+                <li class="rounded-lg py-2 bg-neutral-700 text-white">企業を知る <span class="text-[10px] font-medium">← 関与するのはここだけ</span></li>
+                <li class="rounded-lg py-2 bg-neutral-100 text-neutral-400">選考準備・選考</li>
+                <li class="rounded-lg py-2 bg-neutral-100 text-neutral-400">インターン開始</li>
+              </ol>
+              <p class="mt-3 text-xs text-neutral-500 text-center">「どの企業が合う？」「入った後どうすれば？」という不安が残る</p>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-vred text-center">バイブスインターン</p>
+              <ol class="mt-3 space-y-1.5 text-sm font-bold text-center">
+                <li class="rounded-lg py-2 bg-vred text-white">キックオフミーティング</li>
+                <li class="rounded-lg py-2 bg-vred-pale">自己分析・方針を決める</li>
+                <li class="rounded-lg py-2 bg-vred-pale">企業を知る・選考準備・選考</li>
+                <li class="rounded-lg py-2 bg-vred-pale">インターン開始</li>
+                <li class="rounded-lg py-2 bg-vred text-white">定期面談</li>
+              </ol>
+              <p class="mt-3 text-xs text-vred font-bold text-center">最初から最後まで伴走するから、途中で止まらない</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 誠実な紹介 -->
+        <div class="mt-6 bg-white rounded-[28px] p-6 sm:p-10 reveal">
+          <h3 class="font-zen font-black text-xl sm:text-2xl"><span class="text-vred font-en mr-2">03</span>無理に勧めない、誠実な紹介</h3>
+          <ul class="mt-6 grid sm:grid-cols-2 gap-3 text-sm">
+            <li class="bg-neutral-100 rounded-xl p-4"><p class="font-bold text-neutral-500">✕ よくある紹介</p><p class="mt-1">人気のない求人を「あなただけ特別に」と勧める／辞退を防ぐために本音を聞かない</p></li>
+            <li class="bg-vred-pale rounded-xl p-4"><p class="font-bold text-vred">◎ バイブスインターン</p><p class="mt-1">自己分析をもとに目標に沿った企業だけを厳選。紹介した企業を断ってもOK。納得できるまで一緒に考えます</p></li>
+          </ul>
+        </div>
+
+        <!-- メッセージ -->
+        <div class="mt-6 bg-cream rounded-[28px] p-6 sm:p-10 grid md:grid-cols-[240px_1fr] gap-6 items-center reveal">
+          <img src="img/team.jpg" alt="運営メンバー" class="w-full aspect-[4/3] object-cover object-[50%_45%] rounded-xl" />
+          <div>
+            <p class="font-en font-bold text-vred text-sm tracking-wider">MESSAGE</p>
+            <h3 class="mt-1 font-zen font-black text-xl sm:text-2xl">若者に「はたらく選択肢」を示す。</h3>
+            <p class="mt-3 text-sm leading-relaxed">「就活の始め方が分からない」「企業の探し方が分からない」。そんな悩みから、仕事選びを妥協してしまう学生がたくさんいます。バイブスインターンは「就活を成功させたい」「変わりたい」そんな学生たちを一人ひとり支援していきます。</p>
+            <p class="mt-3 text-xs font-bold text-neutral-500">株式会社やるかやらんか（有料職業紹介事業許可 29-ユ-300222）</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 06 FAQ ===== -->
+    <section id="faq" class="bg-white rounded-t-[48px] md:rounded-t-[80px] pt-16 md:pt-24 pb-20 md:pb-28 scroll-mt-16">
+      <div class="max-w-3xl mx-auto px-4">
+        <div class="text-center reveal">
+          <p class="font-en font-bold text-vred tracking-wider">06 ─ FAQ</p>
+          <h2 class="mt-1 font-zen font-black text-vred text-3xl sm:text-4xl">よくある質問</h2>
+          <div class="mx-auto mt-4 w-32 h-1 bg-vred"></div>
+        </div>
+        <div class="mt-10 space-y-3">
+          <details class="bg-cream rounded-xl px-5 py-4 reveal">
+            <summary class="flex justify-between items-center cursor-pointer font-bold gap-4"><span><span class="font-en text-vred mr-3">Q</span>本当に無料ですか？</span><span class="faq-icon text-vred text-2xl transition">＋</span></summary>
+            <p class="mt-3 pt-3 border-t border-neutral-200 text-sm leading-relaxed"><span class="font-en font-bold text-vred mr-3">A</span>はい。学生の方は面談から企業紹介、インターン中の伴走サポートまですべて無料です。</p>
+          </details>
+          <details class="bg-cream rounded-xl px-5 py-4 reveal">
+            <summary class="flex justify-between items-center cursor-pointer font-bold gap-4"><span><span class="font-en text-vred mr-3">Q</span>1年生でも、やりたいことが決まっていなくても大丈夫？</span><span class="faq-icon text-vred text-2xl transition">＋</span></summary>
+            <p class="mt-3 pt-3 border-t border-neutral-200 text-sm leading-relaxed"><span class="font-en font-bold text-vred mr-3">A</span>大歓迎です。長期インターンは大学1年生から挑戦できます。初回面談では「なりたい自分」を一緒に言葉にするところから始めます。</p>
+          </details>
+          <details class="bg-cream rounded-xl px-5 py-4 reveal">
+            <summary class="flex justify-between items-center cursor-pointer font-bold gap-4"><span><span class="font-en text-vred mr-3">Q</span>どんな企業を紹介してもらえますか？</span><span class="faq-icon text-vred text-2xl transition">＋</span></summary>
+            <p class="mt-3 pt-3 border-t border-neutral-200 text-sm leading-relaxed"><span class="font-en font-bold text-vred mr-3">A</span>導入企業約160社の中から、主体性を評価し、学生にも仕事を任せてくれる企業を紹介します。営業・マーケティング・企画・エンジニアなど、目標に合わせて提案します。</p>
+          </details>
+          <details class="bg-cream rounded-xl px-5 py-4 reveal">
+            <summary class="flex justify-between items-center cursor-pointer font-bold gap-4"><span><span class="font-en text-vred mr-3">Q</span>週にどれくらい働きますか？</span><span class="faq-icon text-vred text-2xl transition">＋</span></summary>
+            <p class="mt-3 pt-3 border-t border-neutral-200 text-sm leading-relaxed"><span class="font-en font-bold text-vred mr-3">A</span>週2日〜、1日4時間〜など企業によって異なります。授業やサークルに合わせて選べます。</p>
+          </details>
+          <details class="bg-cream rounded-xl px-5 py-4 reveal">
+            <summary class="flex justify-between items-center cursor-pointer font-bold gap-4"><span><span class="font-en text-vred mr-3">Q</span>学業やサークルと両立できますか？</span><span class="faq-icon text-vred text-2xl transition">＋</span></summary>
+            <p class="mt-3 pt-3 border-t border-neutral-200 text-sm leading-relaxed"><span class="font-en font-bold text-vred mr-3">A</span>両立OKです。週の稼働日数や時間、リモート可否など、あなたのスケジュールに合う企業を提案します。</p>
+          </details>
+          <details class="bg-cream rounded-xl px-5 py-4 reveal">
+            <summary class="flex justify-between items-center cursor-pointer font-bold gap-4"><span><span class="font-en text-vred mr-3">Q</span>インターン中にお給料はもらえますか？</span><span class="faq-icon text-vred text-2xl transition">＋</span></summary>
+            <p class="mt-3 pt-3 border-t border-neutral-200 text-sm leading-relaxed"><span class="font-en font-bold text-vred mr-3">A</span>紹介するのは、基本的に給与のある長期インターンです。給与形態は企業ごとに異なるため、面談時に詳しくお伝えします。</p>
+          </details>
+          <details class="bg-cream rounded-xl px-5 py-4 reveal">
+            <summary class="flex justify-between items-center cursor-pointer font-bold gap-4"><span><span class="font-en text-vred mr-3">Q</span>紹介された企業を断ってもいいですか？</span><span class="faq-icon text-vred text-2xl transition">＋</span></summary>
+            <p class="mt-3 pt-3 border-t border-neutral-200 text-sm leading-relaxed"><span class="font-en font-bold text-vred mr-3">A</span>もちろんです。納得できるまで一緒に考えます。無理に勧めることはありません。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section id="cta" class="logo-pattern overflow-clip py-20 md:py-28 text-center text-white">
+      <div class="max-w-3xl mx-auto px-4">
+        <h2 class="reveal">
+          <img src="https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpVBW1/s-300x123_9c8c1b49-2b57-4a43-80a4-cf3e6d673dfb.svg" alt="バイブスインターン" class="mx-auto w-[240px] sm:w-[320px] md:w-[360px] aspect-[300/123]" />
+        </h2>
+        <p class="mt-6 font-zen font-black text-xl sm:text-2xl reveal">まだ何も決まってなくて、大丈夫。</p>
+        <p class="mt-4 font-bold leading-relaxed reveal">一歩目が不安でも、大丈夫。<br />まずは30分、あなたの話を聞かせてください。</p>
+
+        <ul class="mt-8 flex flex-wrap justify-center gap-2 text-sm font-bold reveal">
+          <li class="bg-white/15 rounded-full px-4 py-1.5">#学生完全無料</li>
+          <li class="bg-white/15 rounded-full px-4 py-1.5">#オンライン30分</li>
+          <li class="bg-white/15 rounded-full px-4 py-1.5">#無理な勧誘なし</li>
+        </ul>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center reveal">
+          <!-- 予約ページのURLはページ下部の BOOKING_URL で一括設定 -->
+          <a href="#cta" data-booking="cta" class="inline-flex justify-center items-center bg-white text-vred font-black text-lg px-8 py-4 rounded-full shadow-[0_6px_0_#8f0b0c] hover:translate-y-[2px] hover:shadow-[0_4px_0_#8f0b0c] transition">無料で相談してみる ›</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-vred-dark text-white py-10">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-sm">
+      <img src="https://storage.googleapis.com/studio-design-asset-files/projects/NxqgMpVBW1/s-300x123_9c8c1b49-2b57-4a43-80a4-cf3e6d673dfb.svg" alt="バイブスインターン" class="h-10 w-auto" />
+      <div class="md:text-right font-bold">
+        <p>運営：株式会社やるかやらんか</p>
+        <p class="mt-1 text-xs opacity-80">有料職業紹介事業許可 29-ユ-300222</p>
+        <p class="mt-1 text-xs opacity-80">&copy; 2026 Yaruka Yaranka Inc.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 追従CTA（PC・スマホ共通）：FVを過ぎたら下部に出て、最下部の申し込みエリアに来たら隠れる -->
+  <div id="sticky-cta" class="fixed bottom-0 inset-x-0 z-40 translate-y-full transition-transform duration-300" aria-hidden="true">
+    <div class="bg-vred/95 backdrop-blur border-t-2 border-white/80 shadow-[0_-8px_24px_rgba(0,0,0,.18)]">
+      <div class="max-w-6xl mx-auto px-3 md:px-4 py-2.5 md:py-3 flex items-center gap-3 md:gap-6">
+        <p class="hidden md:block text-white leading-snug">
+          <span class="block font-zen font-black text-lg lg:text-xl">まだ何も決まってなくて、大丈夫。</span>
+          <span class="block text-sm font-bold opacity-90">30分で、あなたに合う企業がわかる</span>
+        </p>
+        <a href="#cta" data-booking="sticky" tabindex="-1" class="sticky-btn relative overflow-hidden flex-1 md:flex-none md:ml-auto flex flex-col items-center justify-center bg-white text-vred rounded-full px-6 md:px-10 py-2 md:py-2.5 shadow-[0_4px_0_#8f0b0c] hover:translate-y-[2px] hover:shadow-[0_2px_0_#8f0b0c] transition">
+          <span class="font-zen font-black text-[17px] md:text-lg leading-tight">まずは話を聞いてみる ›</span>
+          <span class="mt-0.5 text-[10px] md:text-xs font-bold text-ink/70 leading-tight">無料・オンライン30分・話すだけでOK</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/kv.js"></script>
+  <script>
+    // 導入企業ロゴ（資料「バイブスインターン導入企業様」より）
+    // ★ 上から順に表示されます（売上規模の大きい順）。順番を変えるときは行を入れ替えてください。
+    //   現在の並びは公開情報・知名度からの目安です。正確な売上で並べ直す場合はこのリストを修正。
+    const LOGO_LIST = [
+      // --- A：上場企業・大手 ---
+      ['image46.png', 'ロート製薬'],
+      ['image55.png', 'タカラスタンダード'],
+      ['image35.png', 'レバレジーズ'],
+      ['image67.png', 'スーパーホテル'],
+      ['job_toyotaunited.png', 'トヨタユナイテッド奈良'],
+      ['image51.png', 'DYM'],
+      // --- B：中堅・知名度のある企業 ---
+      ['image41.png', 'アチーブメント'],
+      ['image52.png', 'スマレジ'],
+      ['image39.jpg', '千房'],
+      ['image31.jpg', 'akippa'],
+      // --- C：グループ・ホールディングス ほか ---
+      ['image27.jpg', 'ニモマケズHD'],
+      ['image28.jpg', 'HIRO HOLDINGS'],
+      ['image24.jpg', 'KEC Group'],
+      ['image54.png', 'LIVE WELL GROUP'],
+      ['image45.jpg', 'ainico group'],
+      ['image19.jpg', '辰巳運輸'],
+      ['image60.png', '梅乃宿'],
+      ['image44.png', '岡山フードサービス'],
+      // --- D：その他（売上規模未確認・資料の掲載順） ---
+      ['image40.png', 'miratap'], ['image37.png', 'HIRAKAWA'], ['image10.jpg', 'JAPAN DOT QUEST'], ['image48.jpg', 'SENSE TRUST'],
+      ['image36.png', 'ビーバーズ'], ['image26.jpg', '81 GALLERY'], ['image7.png', 'fint'], ['image12.png', 'MIGINANAME UE'],
+      ['image25.png', 'DESIGNER Inc'], ['image71.png', 'SPARKLE'], ['image42.jpg', 'EAST END & CO.'], ['image65.jpg', 'ZERO CAREER'],
+      ['image66.png', 'acepoint'], ['image64.png', 'EBISU'], ['image61.png', 'Gerbera'], ['image85.png', 'boogie woogie'],
+      ['image20.png', 'GOAT'], ['image59.png', '荻田建築事務所'], ['image22.png', 'きらく'], ['image32.jpg', 'Wellhealth'],
+      ['image18.png', 'nerugoo'], ['image23.png', '青木松風庵'], ['image13.jpg', 'ベル'], ['image16.png', 'Virtual Arts'],
+      ['image30.png', 'PartX'], ['image43.jpg', 'FDS'], ['image82.jpg', 'Sun Growing'], ['image3.png', 'ROUTE ZERO'],
+      ['image33.jpg', 'IMAS'], ['image47.png', 'SPOTAKA'], ['image53.png', 'BUZZ MEDIA'], ['image11.png', 'NinjaFoods'],
+      ['image5.jpg', 'Natee'], ['image58.png', 'TW'], ['image88.png', 'oyodo'], ['image62.png', 'DAIWA'],
+      ['image8.png', 'Sobani'], ['image56.png', 'O.E.N'], ['image50.png', 'Beatrigger'], ['image34.jpg', 'THE SEED'],
+      ['image49.png', 'RAFT'], ['image70.jpg', 'Trust&Achievement'],
+      // --- E：追加分（求人票から切り出し・売上規模未確認） ---
+      ['job_anchor.png', 'Anchor'], ['job_ash.png', 'アッシュ'], ['job_bewell.png', 'Bwell'], ['job_brandvox.png', 'BRAND VOX'],
+      ['job_circus.png', 'CIRCUS'], ['job_clan.png', 'クラン'], ['job_connecttime.png', 'コネクトタイム'], ['job_crossrun.png', 'CROSLAN'],
+      ['job_elockhome.png', 'イーロックホーム'], ['job_gworth.png', 'G.WORTH'],
+      ['job_jiyu.png', '自由'], ['job_lienfort.png', 'Lien Fort'],
+      ['job_mi.png', 'M・I設計'], ['job_officebright.png', 'オフィスブライト'], ['job_officenavi.png', 'オフィスナビ'], ['job_pleageclover.png', 'Pledge Clover'],
+      ['job_remind.png', 'Remind'], ['job_scratch.png', 'Scratch'], ['job_secondeffort.png', 'Second effort'], ['job_socialbridge.png', 'SOCIALBRIDGE'],
+      ['job_sowa.png', '宗和工業'], ['job_tabuchi.png', 'タブチ'], ['job_tksystem.png', 'TK System'], ['job_vba.png', 'VBA'],
+      ['job_volta.png', 'VOLTA'], ['job_yoshida.png', '吉田産業'], ['job_youredge.png', 'YourEdge'],
+    ];
+    const LOGOS = LOGO_LIST.map(([f]) => f);
+    const LOGO_NAME = Object.fromEntries(LOGO_LIST);
+    // 資料側でトリミングされていたロゴ（上 右 下 左 の %）
+    const CROPS = {
+      'image10.jpg': '13% 20.5% 9.5% 14.2%', 'image5.jpg': '11.8% 30.2% 11.8% 27.4%', 'image26.jpg': '0 20.4% 0 21.1%',
+      'image23.png': '37.1% 3.3% 34.8% 2.7%', 'image20.png': '22.7% 4.1% 14.6% 9.6%', 'image18.png': '28.4% 0 33.3% 0',
+      'image34.jpg': '16.5% 0 12.9% 0', 'image37.png': '31.9% 27% 32.2% 26.9%', 'image36.png': '28% 0 26.1% 0', 'image88.png': '24.6% 0 20.7% 0',
+    };
+    const logoBox = (f, size) => {
+      const crop = CROPS[f] ? ` style="object-view-box: inset(${CROPS[f]})"` : '';
+      return `<div class="relative ${size} bg-white border border-neutral-200 rounded-xl overflow-hidden"><img src="img/logos/${f}" alt="${LOGO_NAME[f] || ''}" class="absolute inset-0 w-full h-full p-2 object-contain"${crop}></div>`;
+    };
+
+    // FVの導入企業ロゴ（6枠・初期表示はHTML）。リスト上位12社を、1枠ずつ順番にふわっと入れ替える
+    const fvLogos = document.getElementById('fv-logos');
+    if (fvLogos) {
+      const pool = LOGOS.slice(0, 12);
+      const tiles = [...fvLogos.children];
+      let next = tiles.length, slot = 0;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce) setInterval(() => {
+        const tile = tiles[slot], f = pool[next];
+        tile.style.opacity = '0';
+        setTimeout(() => {
+          const img = tile.querySelector('img');
+          img.src = `img/logos/${f}`; img.alt = LOGO_NAME[f] || '';
+          img.style.objectViewBox = CROPS[f] ? `inset(${CROPS[f]})` : '';
+          tile.style.opacity = '1';
+        }, 500);
+        next = (next + 1) % pool.length; slot = (slot + 1) % tiles.length;
+      }, 1800);
+    }
+
+    // ロゴウォール（最初は24社＝3/4/6列どれでも行が揃う数、もっと見るで全件）
+    const wall = document.getElementById('logo-wall');
+    const moreBtn = document.getElementById('wall-more');
+    const renderWall = (n) => { wall.innerHTML = LOGOS.slice(0, n).map((f) => logoBox(f, 'aspect-[2/1]')).join(''); };
+    renderWall(24);
+    moreBtn.addEventListener('click', () => { renderWall(LOGOS.length); moreBtn.remove(); });
+
+    // ===== 無料相談の予約（Googleカレンダー予約スケジュール：竹内 侑 さん） =====
+    // TODO: 2つのURLを設定してください（手順は backend/セットアップ手順.md）
+    //   BOOKING_URL … 竹内さんの予約スケジュールの「予約ページ」のURL（https://calendar.app.google/… の形）
+    //   LOG_URL     … スプレッドシートのApps Scriptを「ウェブアプリ」として公開したURL（クリック数の記録用）
+    const BOOKING_URL = 'https://calendar.app.google/rQnHM67SAiFQQeum9';
+    const LOG_URL = 'https://script.google.com/macros/s/AKfycby9wjtxZmbn2EzDf0xXXQQmlxIrmgJ7eRuUXY0tTfcoolxzY2kDcwb7yrGWQlWNBCi_1Q/exec';
+
+    // 「無料で相談してみる」ボタン（data-booking 付き）を、すべて予約ページへ直接つなぐ
+    const bookingButtons = document.querySelectorAll('[data-booking]');
+    if (BOOKING_URL) {
+      bookingButtons.forEach((a) => {
+        a.href = BOOKING_URL;
+        a.target = '_blank';
+        a.rel = 'noopener';
+      });
+    }
+    // どのボタンが押されたかをスプレッドシートに記録（URL未設定なら何もしない）
+    const params = new URLSearchParams(location.search);
+    const logClick = (position) => {
+      if (!LOG_URL) return;
+      const body = JSON.stringify({
+        position,
+        page: location.pathname,
+        referrer: document.referrer,
+        utm_source: params.get('utm_source') || '',
+        utm_medium: params.get('utm_medium') || '',
+        utm_campaign: params.get('utm_campaign') || '',
+        device: window.matchMedia('(max-width: 767px)').matches ? 'スマホ' : 'PC',
+      });
+      // ページを離れても送信が途切れないよう sendBeacon を使う
+      if (navigator.sendBeacon) navigator.sendBeacon(LOG_URL, new Blob([body], { type: 'text/plain' }));
+      else fetch(LOG_URL, { method: 'POST', body, mode: 'no-cors', keepalive: true });
+    };
+    bookingButtons.forEach((a) => a.addEventListener('click', () => logClick(a.dataset.booking)));
+
+    // スクロールで表示
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+    // スマホ目次メニュー
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('menu');
+    menuBtn.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden') === false;
+      menuBtn.setAttribute('aria-expanded', open);
+    });
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => { menu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded', false); }));
+
+    // 追従CTA：FVのボタンが画面から消えたら出し、最下部の申し込みエリアが見えたら隠す
+    const sticky = document.getElementById('sticky-cta');
+    const cta = document.getElementById('cta');
+    const fvButton = document.querySelector('[data-booking="fv"]');
+    const updateSticky = () => {
+      const pastFv = fvButton.getBoundingClientRect().bottom < 0;
+      const atCta = cta.getBoundingClientRect().top < window.innerHeight;
+      const show = pastFv && !atCta;
+      sticky.classList.toggle('translate-y-full', !show);
+      sticky.setAttribute('aria-hidden', String(!show));
+      sticky.querySelectorAll('a').forEach((a) => { a.tabIndex = show ? 0 : -1; });
+    };
+    window.addEventListener('scroll', updateSticky, { passive: true });
+    window.addEventListener('resize', updateSticky);
+    updateSticky();
+  </script>
+</body>
+</html>
