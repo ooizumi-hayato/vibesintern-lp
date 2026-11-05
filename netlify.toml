@@ -1,5 +1,5 @@
 # Netlify の公開設定（GitHub 連携用）
-# 公開フォルダはこのフォルダ全体。ただし予約集計のスクリプトとローカル確認用ファイルは公開しない
+# 公開フォルダはこのフォルダ全体。ただし予約集計のスクリプトとローカル確認用ファイルは公開しない（CLAUDE.md・.claude は後任の Claude Code 用）
 [build]
   publish = "."
-  command = "rm -rf backend serve.ps1 README.md"
+  command = "rm -rf backend serve.ps1 README.md CLAUDE.md .claude .gitignore netlify.toml"
