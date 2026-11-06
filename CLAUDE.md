@@ -8,7 +8,7 @@
 
 ## 公開のしくみ（重要）
 
-- ソースは GitHub `https://github.com/sarashishogo/vibesintern-lp` の `main` ブランチ
+- ソースは GitHub `https://github.com/ooizumi-hayato/vibesintern-lp` の `main` ブランチ
 - Netlify（サイト名 sparkling-platypus-0a9667）が GitHub と連携しており、**`main` に push すると1〜2分で https://vibesintern.com に自動反映**される
 - `netlify.toml` のビルドコマンドで `backend/`・`serve.ps1`・`CLAUDE.md`・`.claude/` は公開対象から外している。新しく内部用ファイルを足すときはここにも追加する
 - Netlify へのドラッグ＆ドロップ公開はしない（GitHub と食い違うため）
